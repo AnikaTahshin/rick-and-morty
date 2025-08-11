@@ -1,6 +1,6 @@
 import React from "react";
 
-const EpisodesCard = () => {
+const LocationCard = () => {
   const episodes = [
     { name: "S01 E01", text: "Pilot" },
     { name: "S01 E02", text: "Lawnmower Dog" },
@@ -56,4 +56,4 @@ const EpisodesCard = () => {
   );
 };
 
-export default EpisodesCard;
+export default LocationCard;

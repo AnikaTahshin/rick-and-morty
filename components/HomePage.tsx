@@ -24,7 +24,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center p-5 bg-gray-600">
+      <div className="flex flex-col items-center justify-center p-5 bg-[#191D29]">
         <Image
           className="max-w-full h-auto"
           src={"/assets/title.png"}
@@ -61,7 +61,7 @@ const HomePage = () => {
             MORTY <span className="inline-block text-white">WIKI</span>
           </span>
         </h1>
-        <div className="absolute right-5 bottom-10 md:right-15 md:top-70 lg:right-15 lg:top-40 bg-gradient-to-r from-[#9DFE00] to-[#14D9E5] w-[63.62px] h-[105.19px] md:w-[170px] md:h-[281.59px] rounded-[71.14px] md:flex items-center justify-center rotate-[25.82deg] drop-shadow-[0_0_15px_#9DFE00] ">
+        <div className="absolute right-5 top-70 md:right-10 md:top-60 lg:right-15 lg:top-70 xl:right-50 xl:top-70 bg-gradient-to-r from-[#9DFE00] to-[#14D9E5] w-[63.62px] h-[105.19px] md:w-[140px] md:h-[240.59px] lg:w-[170px] lg:h-[281.59px] rounded-[71.14px] md:flex items-center justify-center rotate-[25.82deg] drop-shadow-[0_0_15px_#9DFE00] ">
           <div className="absolute bottom-10 right-0 md:right-0 md:bottom-25 scale-140">
             <Image
             src="/assets/gun.png"
@@ -73,8 +73,8 @@ const HomePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col-reverse md:flex-row items-start md:items-center justify-center gap-4 mt-8">
-          <div className="flex flex-row items-center justify-center gap-2 bg-gradient-to-r from-[#9DFE00] to-[#14D9E5] p-3 m-2 rounded-full">
+        <div className="flex flex-col-reverse md:flex-row items-start md:items-center justify-center gap-4 p-2 md:p-0 mt-8 max-w-[100%]">
+          <div className="flex flex-row items-center justify-center gap-1 bg-gradient-to-r from-[#9DFE00] to-[#14D9E5] p-2 rounded-full">
             <Image
               src={"/assets/watch.png"}
               height={20}
@@ -87,8 +87,8 @@ const HomePage = () => {
             </button>
           </div>
 
-          <div className="max-w-[85%]">
-            <p className="text-[#14D9E5] text-sm md:text-shadow-md w-full md:w-[60%]">
+          <div className="w-full md:w-[40%]">
+            <p className="text-[#14D9E5] text-sm md:text-shadow-md ">
               Brilliant but boozy scientist Rick hijacks his fretful teenage
               grandson, Morty, for wild escapades in other worlds and alternate
               dimensions.
@@ -97,9 +97,39 @@ const HomePage = () => {
         </div>
 
         {/* character section starts */}
-
+        <div className="mt-28">
+          <h1 className="text-[24px] text-[#FFFFFF]">Meet the cast</h1>
         <CastCard castData={castData} />
-        <EpisodesCard />
+
+        </div>
+
+        <div className="mt-28">
+          <h1 className="text-[24px] text-[#FFFFFF]">Episodes</h1>
+
+          <EpisodesCard />
+          <Image
+              src={"/assets/star.png"}
+              height={20}
+              width={20}
+              className="object-contain float-right"
+              alt=""
+            />
+        </div>
+
+
+        <div className="mt-28">
+          <Image
+              src={"/assets/star.png"}
+              height={20}
+              width={20}
+              className="object-contain"
+              alt=""
+            />
+          <h1 className="text-[24px] text-[#FFFFFF]">Locations</h1>
+          
+
+          <EpisodesCard />
+        </div>
       </div>
     </>
   );

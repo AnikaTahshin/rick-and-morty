@@ -3,7 +3,7 @@ import React from "react";
 
 const CastDetailsPage = () => {
   return (
-    <div className="flex flex-col items-center justify-center p-15.5 mt-8 bg-gray-600">
+    <div className="flex flex-col items-center justify-center p-15.5 mt-8 bg-[#191D29]">
       <Image src={"/assets/title.png"} height={200} width={200} alt="logo" />
 
       <div className="flex flex-col md:flex-row items-center justify-around rounded-[8px]">
