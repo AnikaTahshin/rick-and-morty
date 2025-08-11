@@ -3,7 +3,7 @@ import React from "react";
 
 const CastDetailsPage = () => {
   return (
-    <div className="flex flex-col items-center justify-center p-5 mt-8 bg-gray-600">
+    <div className="flex flex-col items-center justify-center p-15.5 mt-8 bg-gray-600">
       <Image src={"/assets/title.png"} height={200} width={200} alt="logo" />
 
       <div className="flex flex-col md:flex-row items-center justify-around rounded-[8px]">
@@ -19,15 +19,15 @@ const CastDetailsPage = () => {
             <Image
               className="rounded-[8px]"
               src={"/assets/cast.png"}
-              height={200}
-              width={200}
+              height={180}
+              width={180}
               alt="cast"
             />
           </div>
         </div>
 
         <div
-          className="border-l-[0.76px] md:h-40 m-4"
+          className="border-l-[0.76px] md:h-40 m-16"
           style={{
             borderImage: "linear-gradient(to right, #9DFE00, #14D9E5) 1",
             borderImageSlice: 1,
