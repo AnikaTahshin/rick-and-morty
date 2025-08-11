@@ -1,16 +1,52 @@
+"use client";
+import { Character, getCastData, getCastDetails,  } from "@/service/api.service";
 import Image from "next/image";
-import React from "react";
+import { useRouter } from 'next/navigation';
+interface CastCardProps {
+  castData: Character[];
+}
 
-const CastCard = () => {
+const CastCard: React.FC<CastCardProps> = ({ castData }) => {
+    const router = useRouter();
+
+    const handleCastDetails = async (id:number) => {
+      // const res = await getCastDetails(id)
+      console.log("details the id",id)
+     router.push('/cast-details')
+    }
   return (
     <>
-        <h1>Meet the cast</h1>
-
-    <div className="border-2 rounded-[12px] max-w-[250px] max-h-[250px] flex items-start justify-center flex-col custom-clip">
-    <Image src={'/assets/cast.png'} height={200} width={200} alt="" className="rounded-[12px]" />
-    <p>Morty Smith</p>
-
-  </div>
+      
+      <div className="relative mt-12">
+        <h1 className="absolute left-0 text-[24px] text-[#FFFFFF]">Meet the cast</h1>
+        <div className="grid grid-cols-6 gappx-4 mt-14 ">
+          {castData.slice(0, 6).map((cast, index) => (
+            <div key={index}
+              className="max-w-sm rounded-[12.09px] shadow-sm border-[0.76px] custom-clip cursor-pointer"
+              onClick={() => handleCastDetails(cast.id) }
+              style={{
+                borderImage: "linear-gradient(to right, #9DFE00, #14D9E5) 1",
+                borderImageSlice: 1,
+              }}
+            >
+              <img className="rounded-[12.09px] p-1" src={cast.image} alt="" />
+              <div className="m-3">
+                <p className=" font-normal text-[#FFFFFF] dark:text-gray-400">
+                  {cast.name}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <Image
+          className="absolute top-1/2 right-0 translate-y-[-50%] cursor-pointer"
+          src={"/assets/arrow.png"}
+          height={30}
+          width={30}
+          alt="arrow"
+          onClick={getCastData}
+        />
+      </div>
     </>
   );
 };
