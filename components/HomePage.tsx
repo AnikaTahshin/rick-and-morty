@@ -65,12 +65,12 @@ const HomePage = () => {
         <div className="absolute right-5 top-70 md:right-10 md:top-60 lg:right-15 lg:top-70 xl:right-50 xl:top-70 bg-gradient-to-r from-[#9DFE00] to-[#14D9E5] w-[63.62px] h-[105.19px] md:w-[140px] md:h-[240.59px] lg:w-[170px] lg:h-[281.59px] rounded-[71.14px] md:flex items-center justify-center rotate-[25.82deg] drop-shadow-[0_0_15px_#9DFE00] ">
           <div className="absolute bottom-10 right-0 md:right-0 md:bottom-25 scale-140">
             <Image
-            src="/assets/gun.png"
-            className="max-w-full h-auto"
-            height={200}
-            alt=""
-            width={200}
-          />
+              src="/assets/gun.png"
+              className="max-w-full h-auto"
+              height={200}
+              alt=""
+              width={200}
+            />
           </div>
         </div>
 
@@ -100,8 +100,7 @@ const HomePage = () => {
         {/* character section starts */}
         <div className="mt-28">
           <h1 className="text-[24px] text-[#FFFFFF]">Meet the cast</h1>
-        <CastCard castData={castData} />
-
+          <CastCard castData={castData} />
         </div>
 
         <div className="mt-28">
@@ -109,25 +108,23 @@ const HomePage = () => {
 
           <EpisodesCard />
           <Image
-              src={"/assets/star.png"}
-              height={20}
-              width={20}
-              className="object-contain float-right"
-              alt=""
-            />
+            src={"/assets/star.png"}
+            height={20}
+            width={20}
+            className="object-contain float-right"
+            alt=""
+          />
         </div>
-
 
         <div className="mt-28">
           <Image
-              src={"/assets/star.png"}
-              height={20}
-              width={20}
-              className="object-contain"
-              alt=""
-            />
+            src={"/assets/star.png"}
+            height={20}
+            width={20}
+            className="object-contain"
+            alt=""
+          />
           <h1 className="text-[24px] text-[#FFFFFF]">Locations</h1>
-          
 
           <LocationCard />
         </div>

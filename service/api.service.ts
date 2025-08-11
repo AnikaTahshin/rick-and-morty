@@ -14,11 +14,33 @@ export interface CharactersResponse {
 
 export interface CastDetailsResponse {
   data: {
-    
+    character: {
+      id: number;
+      name: string;
+      image: string;
+      status: string;
+      species: string;
+      gender: string;
+      origin: {
+        name: string;
+        url: string;
+      };
+      location: {
+        name: string;
+        url: string;
+      };
+      episode: Array<{
+        id: string;
+        name: string;
+        episode: string;
+      }>;
+    };
   };
 }
 
 export async function getCastData(): Promise<CharactersResponse> {
+  const url = `https://rickandmortyapi.com/graphql`;
+
   const query = `
     {
       characters {
@@ -30,17 +52,15 @@ export async function getCastData(): Promise<CharactersResponse> {
       }
     }
   `;
-
-  const url = `https://rickandmortyapi.com/graphql`;
-
   const res = await fetch(url, {
-    method: "POST", // Changed to POST for GraphQL
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ query }), // Send query in body
-    cache: "no-store", // For Next.js 13+ dynamic data fetching
+    body: JSON.stringify({ query }),
+    cache: "no-store",
   });
+  console.log(res, "get api");
   if (!res.ok) {
     const errorData = await res.json();
     throw new Error(
@@ -65,11 +85,9 @@ export async function getCastDetails(id: number) {
         gender
         origin {
           name
-          url
         }
         location {
           name
-          url
         }
         episode {
           id
@@ -99,5 +117,3 @@ export async function getCastDetails(id: number) {
   const data = await res.json();
   return data;
 }
-
-

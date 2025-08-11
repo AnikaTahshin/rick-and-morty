@@ -2,26 +2,46 @@
 import { Character, getCastData, getCastDetails } from "@/service/api.service";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 interface CastCardProps {
   castData: Character[];
 }
 
 const CastCard: React.FC<CastCardProps> = ({ castData }) => {
   const router = useRouter();
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 6;
 
   const handleCastDetails = async (id: number) => {
-    // const res = await getCastDetails(id)
-    console.log("details the id", id);
-    router.push("/cast-details");
+    router.push(`/character/${id}`);
+  };
+
+  const handleNextPage = () => {
+    if ((currentPage + 1) * itemsPerPage < castData.length) {
+      setCurrentPage(currentPage + 1);
+    } else {
+      // Reset to first page when reaching the end
+      setCurrentPage(0);
+    }
+  };
+
+  const getCurrentItems = () => {
+    const start = currentPage * itemsPerPage;
+    const end = start + itemsPerPage;
+    return castData.slice(start, end);
   };
   return (
     <>
       <div className="mt-8">
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 ">
-          {castData.slice(0, 6).map((cast, index) => (
-            <div key={index} onClick={() => handleCastDetails(cast.id)} className="relative max-w-sm p-1 cursor-pointer">
+          {getCurrentItems().map((cast, index) => (
+            <div
+              key={cast.id}
+              onClick={() => handleCastDetails(cast.id)}
+              className="relative max-w-sm cursor-pointer"
+            >
               <svg
-                className="absolute inset-0 w-full h-full pointer-events-none"
+                className="absolute inset-0 w-full h-auto pointer-events-none"
                 viewBox="0 0 100 100"
                 preserveAspectRatio="none"
               >
@@ -48,15 +68,23 @@ const CastCard: React.FC<CastCardProps> = ({ castData }) => {
               </svg>
 
               <div
-                className="relative overflow-hidden rounded-[8px] p-6"
+                className="relative overflow-hidden rounded-[8px] p-10"
                 style={{
                   clipPath: "polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%)",
                 }}
               >
-                <Image className="w-full h-auto block rounded-[8px]" height={200} width={200} src={cast.image} alt="" />
+                <div className="w-[150px]">
+                  <Image
+                    className="w-full h-auto block rounded-[8px]"
+                    height={100}
+                    width={100}
+                    src={cast?.image}
+                    alt={cast?.name}
+                  />
+                </div>
                 <div className="m-3">
                   <p className="font-normal text-[#FFFFFF] dark:text-gray-400">
-                    {cast.name}
+                    {cast?.name}
                   </p>
                 </div>
               </div>
@@ -69,7 +97,8 @@ const CastCard: React.FC<CastCardProps> = ({ castData }) => {
           height={30}
           width={30}
           alt="arrow"
-          onClick={getCastData}
+          onClick={handleNextPage}
+          priority
         />
       </div>
     </>
