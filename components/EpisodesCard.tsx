@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const EpisodesCard = () => {
@@ -14,7 +15,7 @@ const EpisodesCard = () => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row gap-4">
+      <div className="flex flex-col md:flex-row gap-4 relative">
         {episodes.map((ep, index) => (
           <div key={index} className="relative">
             <svg
@@ -51,6 +52,18 @@ const EpisodesCard = () => {
             </div>
           </div>
         ))}
+        
+
+
+
+         <Image
+                           className="absolute bottom-4 right-0 translate-y-[-50%] cursor-pointer"
+                           src={"/assets/arrow.png"}
+                           height={30}
+                           width={30}
+                           alt="arrow"
+                           
+                         />
       </div>
     </>
   );

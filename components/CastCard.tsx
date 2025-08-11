@@ -63,14 +63,14 @@ const CastCard: React.FC<CastCardProps> = ({ castData }) => {
             </div>
           ))}
         </div>
-        {/* <Image
-          className="absolute top-1/2 right-0 translate-y-[-50%] cursor-pointer"
+        <Image
+          className="absolute -bottom-28 right-0 translate-y-[-50%] cursor-pointer"
           src={"/assets/arrow.png"}
           height={30}
           width={30}
           alt="arrow"
           onClick={getCastData}
-        /> */}
+        />
       </div>
     </>
   );

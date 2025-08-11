@@ -5,6 +5,7 @@ import CastCard from "./CastCard";
 import { getCastData } from "@/service/api.service";
 import type { Character } from "@/service/api.service";
 import EpisodesCard from "./EpisodesCard";
+import LocationCard from "./LocationCard";
 // import { tt_travels } from '../font/font';
 
 const HomePage = () => {
@@ -128,7 +129,7 @@ const HomePage = () => {
           <h1 className="text-[24px] text-[#FFFFFF]">Locations</h1>
           
 
-          <EpisodesCard />
+          <LocationCard />
         </div>
       </div>
     </>
