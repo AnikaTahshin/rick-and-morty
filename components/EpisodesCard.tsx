@@ -73,7 +73,7 @@ const EpisodesCard = () => {
       ))}
 
       {episodes?.length > 0 &&(<Image
-        className="absolute bottom-4 right-0 translate-y-[-50%] cursor-pointer"
+        className="absolute bottom-4 right-0 translate-y-[-50%] cursor-pointer rotate-90 lg:rotate-0"
         src={"/assets/arrow.png"}
         height={30}
         width={30}

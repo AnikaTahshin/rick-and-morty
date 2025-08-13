@@ -90,7 +90,7 @@ const CastCard: React.FC<CastCardProps> = ({ castData }) => {
         </div>
         {castData?.length > 0 && 
         (<Image
-          className="absolute bottom-28 right-0 translate-y-[-50%] cursor-pointer"
+          className="absolute lg:bottom-28 right-8 lg:right-0 translate-y-[-50%] cursor-pointer rotate-90 lg:rotate-0"
           src={"/assets/arrow.png"}
           height={30}
           width={30}
