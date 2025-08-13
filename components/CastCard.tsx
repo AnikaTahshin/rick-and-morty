@@ -1,6 +1,5 @@
 "use client";
-import {  getCastData, getCastDetails } from "@/service/api.service";
-import { CastCardProps, Character } from "@/service/types";
+import { CastCardProps } from "@/service/types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -66,7 +65,7 @@ const CastCard: React.FC<CastCardProps> = ({ castData }) => {
               </svg>
 
               <div
-                className="relative overflow-hidden rounded-[8px] p-10"
+                className="relative overflow-hidden rounded-[8px] p-5 flex items-center justify-center flex-col"
                 style={{
                   clipPath: "polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%)",
                 }}

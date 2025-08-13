@@ -64,3 +64,12 @@ export interface Location {
   id: number;
   name: string;
 }
+
+
+export interface LocationResponse {
+  data: {
+      locations:{
+        results: Location[];
+      }
+  };
+}

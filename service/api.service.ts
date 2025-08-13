@@ -1,4 +1,4 @@
-import { CharactersResponse, Episode, EpisodeResponse } from "./types";
+import { CharactersResponse, Episode, EpisodeResponse, LocationResponse } from "./types";
 
 export async function getCastData(): Promise<CharactersResponse> {
   const url = `https://rickandmortyapi.com/graphql`;
@@ -89,6 +89,41 @@ export async function getAllEpisodes(): Promise<EpisodeResponse> {
           id
           name
           episode
+        }
+      }
+    }
+  `;
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ query }),
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(
+      `Failed to fetch character data: ${res.status} - ${JSON.stringify(
+        errorData.errors
+      )}`
+    );
+  }
+
+  return res.json();
+}
+
+
+export async function getAllLocation(): Promise<LocationResponse> {
+  const url = `https://rickandmortyapi.com/graphql`;
+
+  const query = `
+    {
+      locations {
+        results {
+          id
+          name
+          
         }
       }
     }
