@@ -6,8 +6,8 @@ import React, { useEffect, useState } from "react";
 
 const LocationCard = () => {
   const [location, setLocation] = useState<Location[]>([]);
-  const [startIndex, setStartIndex] = useState(0);
-  const itemsPerPage = 4;
+  const [startIndex, setStartIndex] = useState<number>(0);
+  const itemsPerPage = 5;
 
   async function locationData() {
     try {

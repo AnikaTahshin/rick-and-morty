@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const CastCard: React.FC<CastCardProps> = ({ castData }) => {
   const router = useRouter();
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState<number>(0);
   const itemsPerPage = 6;
 
   const handleCastDetails = async (id: number) => {
@@ -30,6 +30,8 @@ const CastCard: React.FC<CastCardProps> = ({ castData }) => {
   return (
     <>
       <div className="mt-8">
+    
+        
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 ">
           {getCurrentItems().map((cast, index) => (
             cast ? (<div
@@ -90,7 +92,7 @@ const CastCard: React.FC<CastCardProps> = ({ castData }) => {
         </div>
         {castData?.length > 0 && 
         (<Image
-          className="absolute lg:bottom-28 right-8 lg:right-0 translate-y-[-50%] cursor-pointer rotate-90 lg:rotate-0"
+          className="absolute bottom-28  lg:-bottom-28 right-8 lg:right-0 translate-y-[-50%] cursor-pointer rotate-90 lg:rotate-0"
           src={"/assets/arrow.png"}
           height={30}
           width={30}

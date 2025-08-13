@@ -5,8 +5,8 @@ import React, { useEffect, useState } from "react";
 
 const EpisodesCard = () => {
   const [episodes, setEpisodes] = useState<Episode[]>([]);
-  const [startIndex, setStartIndex] = useState(0);
-  const itemsPerPage = 4;
+  const [startIndex, setStartIndex] = useState<number>(0);
+  const itemsPerPage = 5;
 
   async function episodeData() {
     try {
@@ -34,7 +34,7 @@ const EpisodesCard = () => {
   }, []);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-4 relative mt-5 ">
+    <div className="flex flex-col lg:flex-row gap-4 relative mt-5">
       {getCurrentItems().map((ep, index) => (
        ep? ( <div key={index} className="relative">
           <svg
@@ -63,7 +63,7 @@ const EpisodesCard = () => {
             />
           </svg>
 
-          <div className="max-w-[360px] w-full md:w-[240px] ">
+          <div className="max-w-[360px] w-full md:w-[240px] h-auto">
             <div className="relative px-4 py-3 text-white">
               <p className="text-xs">{ep?.episode}</p>
               <p className="text-lg font-medium">{ep?.name}</p>
