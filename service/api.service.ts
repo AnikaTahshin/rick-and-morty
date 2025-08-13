@@ -1,42 +1,4 @@
-export interface Character {
-  id: number;
-  name: string;
-  image: string;
-}
-
-export interface CharactersResponse {
-  data: {
-    characters: {
-      results: Character[];
-    };
-  };
-}
-
-export interface CastDetailsResponse {
-  data: {
-    character: {
-      id: number;
-      name: string;
-      image: string;
-      status: string;
-      species: string;
-      gender: string;
-      origin: {
-        name: string;
-        url: string;
-      };
-      location: {
-        name: string;
-        url: string;
-      };
-      episode: Array<{
-        id: string;
-        name: string;
-        episode: string;
-      }>;
-    };
-  };
-}
+import { CharactersResponse, Episode, EpisodeResponse } from "./types";
 
 export async function getCastData(): Promise<CharactersResponse> {
   const url = `https://rickandmortyapi.com/graphql`;
@@ -60,7 +22,7 @@ export async function getCastData(): Promise<CharactersResponse> {
     body: JSON.stringify({ query }),
     cache: "no-store",
   });
-  console.log(res, "get api");
+  
   if (!res.ok) {
     const errorData = await res.json();
     throw new Error(
@@ -100,7 +62,6 @@ export async function getCastDetails(id: number) {
 
   const variables = { id: id.toString() };
 
-  console.log("Sending GraphQL request:", { query, variables });
 
   const res = await fetch("https://rickandmortyapi.com/graphql", {
     method: "POST",
@@ -117,3 +78,38 @@ export async function getCastDetails(id: number) {
   const data = await res.json();
   return data;
 }
+
+export async function getAllEpisodes(): Promise<EpisodeResponse> {
+  const url = `https://rickandmortyapi.com/graphql`;
+
+  const query = `
+    {
+      episodes {
+        results {
+          id
+          name
+          episode
+        }
+      }
+    }
+  `;
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ query }),
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(
+      `Failed to fetch character data: ${res.status} - ${JSON.stringify(
+        errorData.errors
+      )}`
+    );
+  }
+
+  return res.json();
+}
+

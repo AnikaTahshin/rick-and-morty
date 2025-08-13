@@ -1,22 +1,29 @@
+import { getAllEpisodes } from "@/service/api.service";
+import { Episode } from "@/service/types";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const EpisodesCard = () => {
-  const episodes = [
-    { name: "S01 E01", text: "Pilot" },
-    { name: "S01 E02", text: "Lawnmower Dog" },
-    { name: "S01 E03", text: "Anatomy Park" },
-    { name: "S01 E04", text: "M. Night Shaym-Aliens!" },
-    { name: "S01 E05", text: "Meeseeks and Destroy" },
-    { name: "S01 E05", text: "Meeseeks and Destroy" },
-    { name: "S01 E05", text: "Meeseeks and Destroy" },
-    { name: "S01 E05", text: "Meeseeks and Destroy" },
-  ];
+  
 
+  const [episode, setEpisode] = useState<Episode[]>([])
+async function episodeData() {
+    try {
+      const data = await getAllEpisodes();
+      setEpisode(data?.data?.episodes?.results)
+      console.log("see episodes", data?.data?.episodes?.results)
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+  useEffect(() => {
+      episodeData();
+    }, []);
   return (
     <>
       <div className="flex flex-col md:flex-row gap-4 relative">
-        {episodes.map((ep, index) => (
+        {episode.map((ep, index) => (
           <div key={index} className="relative">
             <svg
               className="absolute inset-0 w-full h-full pointer-events-none"
@@ -46,8 +53,8 @@ const EpisodesCard = () => {
 
             <div className="max-w-[360px]">
               <div className="relative px-4 py-3 text-white w-full lg:">
-                <p className="text-xs">{ep.name}</p>
-                <p className="text-lg font-medium">{ep.text}</p>
+                <p className="text-xs">{ep.episode}</p>
+                <p className="text-lg font-medium">{ep.name}</p>
               </div>
             </div>
           </div>

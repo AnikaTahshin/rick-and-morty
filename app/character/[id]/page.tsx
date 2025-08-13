@@ -2,10 +2,11 @@
 
 import { GetServerSideProps } from "next";
 import React from "react";
-import { getCastDetails, CastDetailsResponse } from "@/service/api.service";
+import { getCastDetails } from "@/service/api.service";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import { CastDetailsResponse } from "@/service/types";
 
 const CastDetailsPage = () => {
   const params = useParams();

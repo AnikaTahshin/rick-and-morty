@@ -1,11 +1,10 @@
 "use client";
-import { Character, getCastData, getCastDetails } from "@/service/api.service";
+import {  getCastData, getCastDetails } from "@/service/api.service";
+import { CastCardProps, Character } from "@/service/types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-interface CastCardProps {
-  castData: Character[];
-}
+
 
 const CastCard: React.FC<CastCardProps> = ({ castData }) => {
   const router = useRouter();
@@ -20,7 +19,6 @@ const CastCard: React.FC<CastCardProps> = ({ castData }) => {
     if ((currentPage + 1) * itemsPerPage < castData.length) {
       setCurrentPage(currentPage + 1);
     } else {
-      // Reset to first page when reaching the end
       setCurrentPage(0);
     }
   };

@@ -3,9 +3,10 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import CastCard from "./CastCard";
 import { getCastData } from "@/service/api.service";
-import type { Character } from "@/service/api.service";
+import type {  } from "@/service/api.service";
 import EpisodesCard from "./EpisodesCard";
 import LocationCard from "./LocationCard";
+import { Character } from "@/service/types";
 // import { tt_travels } from '../font/font';
 
 const HomePage = () => {
