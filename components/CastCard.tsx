@@ -1,5 +1,5 @@
 "use client";
-import { CastCardProps } from "@/service/types";
+import { CastCardProps, Character } from "@/service/types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -15,27 +15,27 @@ const CastCard: React.FC<CastCardProps> = ({ castData }) => {
   };
 
   const handleNextPage = () => {
-    if ((currentPage + 1) * itemsPerPage < castData.length) {
-      setCurrentPage(currentPage + 1);
-    } else {
-      setCurrentPage(0);
-    }
+    setCurrentPage((prev) => (prev + 1) % castData.length);
   };
 
-  const getCurrentItems = () => {
-    const start = currentPage * itemsPerPage;
-    const end = start + itemsPerPage;
-    return castData.slice(start, end);
-  };
+   const getCurrentItems = () => {
+      let visibleItems: Character[] = [];
+      for (let i = 0; i < itemsPerPage; i++) {
+        visibleItems.push(castData[(currentPage + i) % castData.length]);
+      }
+      return visibleItems;
+    };
+
+
   return (
     <>
       <div className="mt-8">
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 ">
           {getCurrentItems().map((cast, index) => (
-            <div
+            cast ? (<div
               key={cast.id}
               onClick={() => handleCastDetails(cast.id)}
-              className="relative max-w-sm cursor-pointer"
+              className="relative max-w-sm cursor-pointer my-2"
             >
               <svg
                 className="absolute inset-0 w-full h-auto pointer-events-none"
@@ -85,10 +85,10 @@ const CastCard: React.FC<CastCardProps> = ({ castData }) => {
                   </p>
                 </div>
               </div>
-            </div>
+            </div>) :null
           ))}
         </div>
-        <Image
+        {castData?.length > 0 && (<Image
           className="absolute -bottom-28 right-0 translate-y-[-50%] cursor-pointer"
           src={"/assets/arrow.png"}
           height={30}
@@ -96,7 +96,7 @@ const CastCard: React.FC<CastCardProps> = ({ castData }) => {
           alt="arrow"
           onClick={handleNextPage}
           priority
-        />
+        />)}
       </div>
     </>
   );

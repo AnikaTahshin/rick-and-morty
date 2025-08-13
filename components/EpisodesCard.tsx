@@ -34,9 +34,9 @@ const EpisodesCard = () => {
   }, []);
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 relative">
+    <div className="flex flex-col md:flex-row gap-4 relative mt-5 ">
       {getCurrentItems().map((ep, index) => (
-        <div key={index} className="relative">
+       ep? ( <div key={index} className="relative">
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none"
             viewBox="0 0 300 100"
@@ -63,23 +63,23 @@ const EpisodesCard = () => {
             />
           </svg>
 
-          <div className="max-w-[360px] w-[500px]">
+          <div className="max-w-[360px] w-full md:w-[500px]">
             <div className="relative px-4 py-3 text-white">
               <p className="text-xs">{ep?.episode}</p>
               <p className="text-lg font-medium">{ep?.name}</p>
             </div>
           </div>
-        </div>
+        </div>) : null
       ))}
 
-      <Image
+      {episodes?.length > 0 &&(<Image
         className="absolute bottom-4 right-0 translate-y-[-50%] cursor-pointer"
         src={"/assets/arrow.png"}
         height={30}
         width={30}
         alt="arrow"
         onClick={handleNextPage}
-      />
+      />)}
     </div>
   );
 };

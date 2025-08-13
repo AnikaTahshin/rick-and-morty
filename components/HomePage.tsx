@@ -35,7 +35,7 @@ const HomePage = () => {
           alt="logo"
         />
 
-        <h1 className="text-[40px] lg md:text-[90px] lg:text-[128px] uppercase text-white relative leading-none">
+        <h1 className="font-ttTravels font-bold text-[40px] md:text-[90px] lg:text-[128px] uppercase text-white relative leading-none">
           <div className="absolute rotate-45 -top-5 -left-10 md:-top-12 md:-left-21 lg:-top-7 lg:-left-20 w-[70.6px] md:w-[150.6px] h-auto inline-block">
             <Image
               // className="inline-block absolute -top-3.5 -left-7.5 md:-top-11 md:-left-28 rotate-45 h-[52.43px] w-[52.43px] md:h-[214.6px] max-w-[214.6px] md:w-full"

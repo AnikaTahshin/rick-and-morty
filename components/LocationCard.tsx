@@ -1,3 +1,4 @@
+"use client"
 import { getAllLocation } from "@/service/api.service";
 import { Location } from "@/service/types";
 import Image from "next/image";
@@ -34,7 +35,7 @@ const LocationCard = () => {
   }, []);
   return (
     <>
-      <div className="flex flex-col md:flex-row gap-4 relative">
+      <div className="flex flex-col md:flex-row gap-4 relative mt-5 ">
         {getCurrentItems().map((ep, index) =>
           ep ? (
             <div key={index} className="relative">
@@ -64,7 +65,7 @@ const LocationCard = () => {
                 />
               </svg>
 
-              <div className="max-w-[360px] w-[500px]">
+              <div className="max-w-[360px] w-full md:w-[500px]">
                 <div className="relative px-4 py-3 text-white w-full lg:">
                   <p className="text-xs">#{ep.id}</p>
                   <p className="text-lg font-medium">{ep.name}</p>
