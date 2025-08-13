@@ -41,7 +41,7 @@ const CastDetailsPage = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center p-15.5 h-screen bg-[#191D29]">
+    <div className="flex flex-col items-center justify-center p-15.5 bg-[#191D29]">
       <Image src={"/assets/title.png"} className="mt-4 md:mb-15" height={200} width={200} alt="logo" />
 
       <div className="flex flex-col md:flex-row items-center justify-around rounded-[8px]">
