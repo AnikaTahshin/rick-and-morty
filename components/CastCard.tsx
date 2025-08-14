@@ -15,7 +15,7 @@ const CastCard: React.FC<CastCardProps> = ({ castData }) => {
   };
 
   const handleNextPage = () => {
-if ((currentPage + 1) * itemsPerPage < castData.length) {
+ if ((currentPage + 1) * itemsPerPage < castData.length) {
       setCurrentPage(currentPage + 1);
     } else {
       setCurrentPage(0);

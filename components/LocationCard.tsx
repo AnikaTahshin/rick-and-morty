@@ -35,7 +35,7 @@ const LocationCard = () => {
   }, []);
   return (
     <>
-      <div className="flex flex-col lg:flex-row gap-4 relative mt-5 ">
+      <div className="flex flex-col lg:flex-row lg:flex-wrap gap-1 relative mt-5 ">
         {getCurrentItems().map((ep, index) =>
           ep ? (
             <div key={index} className="relative">
