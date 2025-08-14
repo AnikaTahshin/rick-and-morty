@@ -22,11 +22,11 @@ const EpisodesCard = () => {
   };
 
   const getCurrentItems = () => {
-    let visibleItems: Episode[] = [];
+    let items: Episode[] = [];
     for (let i = 0; i < itemsPerPage; i++) {
-      visibleItems.push(episodes[(startIndex + i) % episodes.length]);
+      items.push(episodes[(startIndex + i) % episodes.length]);
     }
-    return visibleItems;
+    return items;
   };
 
   useEffect(() => {

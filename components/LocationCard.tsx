@@ -23,11 +23,11 @@ const LocationCard = () => {
   };
 
   const getCurrentItems = () => {
-    let visibleItems: Location[] = [];
+    let items: Location[] = [];
     for (let i = 0; i < itemsPerPage; i++) {
-      visibleItems.push(location[(startIndex + i) % location.length]);
+      items.push(location[(startIndex + i) % location.length]);
     }
-    return visibleItems;
+    return items;
   };
 
   useEffect(() => {

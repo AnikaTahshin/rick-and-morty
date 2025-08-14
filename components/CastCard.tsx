@@ -15,15 +15,16 @@ const CastCard: React.FC<CastCardProps> = ({ castData }) => {
   };
 
   const handleNextPage = () => {
-    setCurrentPage((prev) => (prev + 1) % castData.length);
-  };
+if ((currentPage + 1) * itemsPerPage < castData.length) {
+      setCurrentPage(currentPage + 1);
+    } else {
+      setCurrentPage(0);
+    }  };
 
    const getCurrentItems = () => {
-      let visibleItems: Character[] = [];
-      for (let i = 0; i < itemsPerPage; i++) {
-        visibleItems.push(castData[(currentPage + i) % castData.length]);
-      }
-      return visibleItems;
+      const start = currentPage * itemsPerPage;
+    const end = start + itemsPerPage;
+    return castData.slice(start, end);
     };
 
 
